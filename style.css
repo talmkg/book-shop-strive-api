@@ -2,11 +2,16 @@
   max-width: 49vw;
 }
 #secondList {
+  z-index: 0;
   max-width: 49vw;
   height: 100vh;
   border: 1px solid rgba(0, 0, 0, 0.192);
   display: none;
+  padding-top: 10%;
 }
 ul {
   text-align: center;
+}
+navbar {
+  z-index: 1;
 }
