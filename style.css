@@ -3,7 +3,7 @@
 }
 #secondList {
   z-index: 0;
-  max-width: 49vw;
+  min-width: 49vw;
   height: 100vh;
   border: 1px solid rgba(0, 0, 0, 0.192);
   display: none;
