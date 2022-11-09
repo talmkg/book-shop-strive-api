@@ -1,6 +1,12 @@
 #firstList {
-  min-width: 50vw;
+  max-width: 49vw;
 }
 #secondList {
-  max-width: 50vw;
+  max-width: 49vw;
+  height: 100vh;
+  border: 1px solid rgba(0, 0, 0, 0.192);
+  display: none;
+}
+ul {
+  text-align: center;
 }

@@ -1,24 +1,36 @@
 const suggestionsButton = document.querySelector(".btn-suggestions");
 const unorderedList = document.getElementsByClassName("list-group")[0];
-const theCart = document.getElementsByClassName("list-group")[1];
+const theCart = document.getElementById("secondList");
+const addToCard = document.querySelector("add-to-cart");
 
 const listOfBooks = async () => {
   const fetchBooks = await fetch(
     "https://striveschool-api.herokuapp.com/books"
   );
   const result = await fetchBooks.json();
-  console.log(result);
-  const books = await result.map(function (book) {
+  theCart.style.display = "block";
+  const books = result.map(function (book) {
     const bookTitles = book.title;
-    return bookTitles;
+    const bookImages = book.img;
+    return [bookTitles, bookImages];
   });
-  books.forEach((info) => {
+  books.forEach(([bookTitles, bookImages]) => {
     const listItem = document.createElement("li");
     listItem.classList.add("list-group-item");
     listItem.innerHTML =
-      `${info}` +
-      `<button type="button" class="btn btn-info d-flex justify-content-center align-items-center add-to-cart" onclick="modifyCard()">Add to cart&nbsp<i class="fa-solid fa-cart-shopping"></i></button>`;
+      `<h3>${bookTitles}</h3>` +
+      `<img src="${bookImages}" style="width: 40%"/>` +
+      `<button type="button" class="btn btn-info m-1 d-flex justify-content-around add-to-cart" onclick="modifyCard()">Add to cart&nbsp<i class="fa-solid fa-cart-shopping"></i></button>` +
+      `<button type="button" class="btn btn-danger m-1 d-flex justify-content-around add-to-cart" onclick='skip(event)'>Skip</button>`;
     unorderedList.appendChild(listItem);
   });
 };
 suggestionsButton.addEventListener("click", listOfBooks);
+
+// deleting - skipping
+const skip = function () {
+  let lis = document.querySelectorAll(".list-group-item");
+  for (let i = 0; (li = lis[i]); i++) {
+    li.parentNode.removeChild(li);
+  }
+};
