@@ -7,11 +7,22 @@
   height: 100vh;
   border: 1px solid rgba(0, 0, 0, 0.192);
   display: none;
-  padding-top: 5%;
 }
 ul {
   text-align: center;
 }
 navbar {
   z-index: 1;
+}
+.display-none {
+  display: none;
+}
+.dblock {
+  display: block;
+  position: absolute;
+  top: 2px;
+  right: 2px;
+}
+.checkout {
+  bottom: 0;
 }
