@@ -2,6 +2,8 @@ const suggestionsButton = document.querySelector(".btn-suggestions");
 const unorderedList = document.getElementsByClassName("list-group")[0];
 const theCart = document.getElementById("secondList");
 const addToCard = document.querySelector("add-to-cart");
+const searchBar = document.querySelector(".form-control");
+console.log(searchBar);
 
 const listOfBooks = async () => {
   const fetchBooks = await fetch(
@@ -20,17 +22,11 @@ const listOfBooks = async () => {
     listItem.innerHTML =
       `<h3>${bookTitles}</h3>` +
       `<img src="${bookImages}" style="width: 40%"/>` +
-      `<button type="button" class="btn btn-info m-1 d-flex justify-content-around add-to-cart" onclick="modifyCard()">Add to cart&nbsp<i class="fa-solid fa-cart-shopping"></i></button>` +
+      `<button type="button" class="btn btn-info m-1 d-flex justify-content-center align-items-center add-to-cart" onclick="modifyCard()">Add to cart&nbsp<i class="fa-solid fa-cart-shopping"></i></button>` +
       `<button type="button" class="btn btn-danger m-1 d-flex justify-content-around add-to-cart" onclick='skip(event)'>Skip</button>`;
     unorderedList.appendChild(listItem);
   });
 };
 suggestionsButton.addEventListener("click", listOfBooks);
 
-// deleting - skipping
-const skip = function () {
-  let lis = document.querySelectorAll(".list-group-item");
-  for (let i = 0; (li = lis[i]); i++) {
-    li.parentNode.removeChild(li);
-  }
-};
+//ADDING SEARCH BAR BELOW
